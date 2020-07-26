@@ -1,0 +1,10 @@
+Probleem:
+Een cel laat de formule zien in plaats van het resultaat.
+
+Uitgangspunt:
+Automatisch calculeren staat aan.
+
+Oplossing:
+Vermoedelijk staat de opmaak van de cel op "Tekst" of "Text" 
+Zet de opmaak van de cel op General of Standaard.
+En na <enter> wordt de berekening uitgevoerd en zou de berekende waarde getoond moeten worden.
