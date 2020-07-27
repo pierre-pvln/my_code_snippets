@@ -8,6 +8,7 @@
 @ECHO off
 SETLOCAL ENABLEEXTENSIONS
 
+::
 :: BASIC SETTINGS
 :: ==============
 :: Setting the name of the script

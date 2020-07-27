@@ -1,0 +1,97 @@
+:: Name:     CreateMissingFiles.cmd
+:: Purpose:  Create the any missing default files projects folders
+:: Author:   pierre@pvln.nl
+:: Revision: 2019 05 10 - initial version
+::
+:: Required environment variables
+:: ==============================
+:: - VERBOSE                        how verbose output should be if not set script sets it to YES
+:: - extensionFolderName          the name of the extension based on the top level foldername
+
+@ECHO off
+SETLOCAL ENABLEEXTENSIONS
+
+::
+:: Check if required environment variables are set.
+:: If not set them to a safe default value or exit with error.
+:: 
+IF "%VERBOSE%" == "" (
+   SET VERBOSE=YES
+)
+
+:: Create default files
+::
+:: ==================
+:: HTACCESS README
+:: ==================
+ECHO [%~n0 ] _5_extensions\_installed\_htaccess ...
+
+IF NOT EXIST _5_extensions\_installed\_htaccess (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder _5_extensions\_installed\_htaccess not found.
+   GOTO ERROR_EXIT_SUBSCRIPT
+)
+CD _5_extensions\_installed\_htaccess
+IF NOT EXIST "README.md" (
+	ECHO.
+	ECHO DIT BESTAND NIET AANPASSEN. WORDT AUTOMATISCH GEGENEREERD. ALLE WIJZIGINGEN ZIJN WEG NA UPDATE!
+	ECHO.
+	ECHO In deze map staan alle .htaccess bestanden.
+	ECHO.
+	ECHO Hierin is content security policy opgenomen, caching en gzip van bestanden.
+	ECHO.
+	ECHO Werkwijze:<br^>
+	ECHO.
+	ECHO 1 .htaccess bestand downloaden van de server.
+	ECHO.
+	ECHO 2 copieren en de copie hernoemen naar .htaccess_yyyymmdd_from_site ^(dan is het origineel, wat werkt, in ieder geval beschikbaar^).
+	ECHO.
+	ECHO 3 wijzigingen doorvoeren in .htaccess bestand en opslaan.
+	ECHO.
+	ECHO 4 .htaccess bestand copieren en hernoemen naar .htaccess_yyyymmdd_to_site.
+	ECHO.
+	ECHO 5 .htaccess bestand uploaden naar de server.
+	ECHO.
+	) >README.md
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for _5_extensions\_installed\_htaccess created succesfully.
+CD ..\..\..
+
+:: ======================
+:: BACK-UP_INFORMATIE.TXT
+:: ======================
+
+ECHO [%~n0 ] _9_mgmt\_backup\joomla\productie ...
+
+IF NOT EXIST _9_mgmt\_backup\joomla\productie (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder _9_mgmt\_backup\joomla\productie not found.
+   GOTO ERROR_EXIT_SUBSCRIPT
+)
+CD _9_mgmt\_backup\joomla\productie
+IF NOT EXIST "back-up_informatie.txt" (
+	ECHO In deze map staan de back-ups die gemaakt zijn van de productie site en daar dus ook vanaf komen.
+	ECHO Middels de back-ups die hier staan kan de site gerestored worden. 
+	) >back-up_informatie.txt
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for _9_mgmt\_backup\joomla\productie created succesfully.
+CD ..\..\..\..
+
+ECHO [%~n0 ] _9_mgmt\_backup\joomla\test ...
+
+IF NOT EXIST _9_mgmt\_backup\joomla\test (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder _9_mgmt\_backup\joomla\test not found.
+   GOTO ERROR_EXIT_SUBSCRIPT
+)
+CD _9_mgmt\_backup\joomla\test
+IF NOT EXIST "back-up_informatie.txt" (
+	ECHO In deze map staan de back-ups die gemaakt zijn van de test site en daar dus ook vanaf komen.
+	ECHO Middels de back-ups die hier staan kan de site gerestored worden. 
+	) >back-up_informatie.txt
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for _9_mgmt\_backup\joomla\test created succesfully.
+CD ..\..\..\..
+
+GOTO CLEAN_EXIT_SUBSCRIPT
+
+:ERROR_EXIT_SUBSCRIPT
+ECHO %ERROR_MESSAGE%
+EXIT /B 1
+
+:CLEAN_EXIT_SUBSCRIPT   
+EXIT /B 0
