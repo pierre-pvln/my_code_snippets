@@ -33,13 +33,13 @@ IF NOT EXIST _5_extensions\_installed\_htaccess (
 CD _5_extensions\_installed\_htaccess
 IF NOT EXIST "README.md" (
 	ECHO.
-	ECHO DIT BESTAND NIET AANPASSEN. WORDT AUTOMATISCH GEGENEREERD. ALLE WIJZIGINGEN ZIJN WEG NA UPDATE!
+	ECHO DIT BESTAND NIET AANPASSEN. WORDT AUTOMATISCH GEGENEREERD DOOR CreateWebsiteFolderStructure.cmd. ALLE WIJZIGINGEN ZIJN WEG NA UPDATE!
 	ECHO.
 	ECHO In deze map staan alle .htaccess bestanden.
 	ECHO.
 	ECHO Hierin is content security policy opgenomen, caching en gzip van bestanden.
 	ECHO.
-	ECHO Werkwijze:<br^>
+	ECHO Werkwijze:^<br^>
 	ECHO.
 	ECHO 1 .htaccess bestand downloaden van de server.
 	ECHO.
