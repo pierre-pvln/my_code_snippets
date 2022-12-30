@@ -1,4 +1,4 @@
-:: Name:     CreateWebsiteFolderStructure.cmd
+:: Name:     CreateItAll.cmd
 :: Purpose:  Create the baseline folder structure
 :: Author:   pierre@pvln.nl
 :: Revision: 2019 05 10 - initial version
