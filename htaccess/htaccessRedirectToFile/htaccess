@@ -1,0 +1,5 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteCond %{REQUEST_URI} !^/htaccess_index_test.html\.html$
+	RewriteRule . /htaccess_index_test.html.html [L]
+<IfModule>

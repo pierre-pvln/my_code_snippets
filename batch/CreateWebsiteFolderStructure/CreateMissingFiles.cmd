@@ -22,7 +22,7 @@ IF "%VERBOSE%" == "" (
 :: Create default files
 ::
 :: ==================
-:: HTACCESS README
+:: HTACCESS README.md
 :: ==================
 ECHO [%~n0 ] _5_extensions\_installed\_htaccess ...
 
@@ -54,6 +54,31 @@ IF NOT EXIST "README.md" (
 	) >README.md
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for _5_extensions\_installed\_htaccess created succesfully.
 CD ..\..\..
+
+::
+:: ==================
+:: HTACCESS where_to_get_scripts.txt
+:: ==================
+ECHO [%~n0 ] _6_scripts\_htaccess ...
+
+IF NOT EXIST _6_scripts\_htaccess (
+   SET ERROR_MESSAGE=[ERROR] [%~n0 ] ... folder _6_scripts\_htaccess not found.
+   GOTO ERROR_EXIT_SUBSCRIPT
+)
+CD _6_scripts\_htaccess
+IF NOT EXIST "where_to_get_scripts.txt" (
+	ECHO.
+	ECHO DIT BESTAND NIET AANPASSEN. WORDT AUTOMATISCH GEGENEREERD DOOR CreateWebsiteFolderStructure.cmd. ALLE WIJZIGINGEN ZIJN WEG NA UPDATE!
+	ECHO.
+	ECHO Ga naar:
+	ECHO.
+	ECHO https://github.com/pierre-pvln/htaccess_creator/tree/master/03_deploying
+	ECHO.
+	ECHO En volg de instructies in README.md
+	ECHO.
+	) >where_to_get_scripts.txt
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for _6_scripts\_htaccess succesfully.
+CD ..\..
 
 :: ======================
 :: BACK-UP_INFORMATIE.TXT
