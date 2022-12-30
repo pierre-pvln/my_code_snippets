@@ -1,1 +1,1 @@
-Code snippets to demonstrate concept and to remember it.
+Code snippets to demonstrate concept and remember stuff.
