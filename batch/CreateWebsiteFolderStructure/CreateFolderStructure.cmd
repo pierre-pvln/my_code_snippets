@@ -2,6 +2,7 @@
 :: Purpose:  Create the baseline folder structure for website projects
 :: Author:   pierre@pvln.nl
 :: Revision: 2019 05 10 - initial version
+::           2022 12 31 - folders added
 ::
 :: Required environment variables
 :: ==============================
@@ -48,6 +49,11 @@ ECHO [%~n0 ] _3_styling ...
 IF NOT EXIST _3_styling    (md _3_styling)
 CD _3_styling
     IF NOT EXIST _admin        (md _admin)
+    IF NOT EXIST _customize    (md _customize)
+    CD _customize
+       IF NOT EXIST _helix_ultimate (md _helix_ultimate)
+       IF NOT EXIST _T3        (md _T3)
+    CD ..
     IF NOT EXIST _edit         (md _edit)
     IF NOT EXIST _favicon      (md _favicon)
     IF NOT EXIST _fonts        (md _fonts)
