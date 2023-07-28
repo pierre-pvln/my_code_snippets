@@ -3,10 +3,12 @@
 :: Author:   pierre@pvln.nl
 :: Revision: 2019 05 10 - initial version
 ::
+:: Code location: https://github.com/pierre-pvln/my_code_snippets/tree/master/batch/CreateWebsiteFolderStructure
+::
+::
 :: Required environment variables
 :: ==============================
-:: - VERBOSE                        how verbose output should be if not set script sets it to YES
-:: - extensionFolderName          the name of the extension based on the top level foldername
+:: - VERBOSE  how verbose output should be if not set script sets it to YES
 
 @ECHO off
 SETLOCAL ENABLEEXTENSIONS

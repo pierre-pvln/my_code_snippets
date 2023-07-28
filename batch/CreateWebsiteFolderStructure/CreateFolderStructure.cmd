@@ -3,6 +3,10 @@
 :: Author:   pierre@pvln.nl
 :: Revision: 2019 05 10 - initial version
 ::           2022 12 31 - folders added
+::           2023 07 28 - updated based on experiences
+::
+:: Code location: https://github.com/pierre-pvln/my_code_snippets/tree/master/batch/CreateWebsiteFolderStructure
+::
 ::
 :: Required environment variables
 :: ==============================
@@ -41,36 +45,84 @@ CD _2_content
     IF NOT EXIST _mailings     (md _mailings)
     IF NOT EXIST _pagespeed    (md _pagespeed)
     IF NOT EXIST _videos       (md _videos)
-	IF NOT EXIST _music        (md _music)
-	IF EXIST _images (ren _images _images_MOVE_FILES)
+    IF NOT EXIST _music        (md _music)
+    IF EXIST _images (
+       CD _images
+       MD @_1_copy_contents_to_folder__pictures
+       MD @_2_update_links_in articles_to_folder__pictures
+       MD @_3_then_remove_this_folder
+       CD ..
+    )
 CD ..
 
 ECHO [%~n0 ] _3_styling ...
 IF NOT EXIST _3_styling    (md _3_styling)
 CD _3_styling
-    IF NOT EXIST _admin        (md _admin)
-    IF NOT EXIST _customize    (md _customize)
-    CD _customize
-       IF NOT EXIST _helix_ultimate (md _helix_ultimate)
-       IF NOT EXIST _T3        (md _T3)
-    CD ..
-    IF NOT EXIST _edit         (md _edit)
-    IF NOT EXIST _favicon      (md _favicon)
-    IF NOT EXIST _fonts        (md _fonts)
-    IF NOT EXIST _huisstijl    (md _huisstijl)
-    CD _huisstijl
-        IF NOT EXIST _history    (md _history)
+    IF NOT EXIST _admin         (md _admin)
+    IF NOT EXIST _favicon       (md _favicon)
+    IF NOT EXIST _templates     (md _templates)
+    CD _templates
+        IF NOT EXIST _manuals   (md _manuals)
     CD..
-	IF NOT EXIST _logos        (md _logos)
+    IF NOT EXIST _fonts         (md _fonts)
+    IF NOT EXIST _logos         (md _logos)
     CD _logos
         IF NOT EXIST _history    (md _history)
     CD..
-    IF NOT EXIST _mgmt         (md _mgmt)
-    IF NOT EXIST _templates    (md _templates)
-    CD _templates
-        IF NOT EXIST _manuals    (md _manuals)
+    IF NOT EXIST _watermark     (md _watermark)
+    IF NOT EXIST _customization (md _customization)
+    CD _customization
+       IF NOT EXIST _helix_ultimate (md _helix_ultimate)
+       IF NOT EXIST _T3             (md _T3)
+    CD ..
+    IF NOT EXIST _organisation  (md _organisation)
+    CD _organisation
+        IF NOT EXIST _history    (md _history)
     CD..
-    IF NOT EXIST _watermerk    (md _watermerk)
+
+    IF NOT EXIST j4_backend     (md j4_backend)
+    CD j4_backend
+        IF NOT EXIST aMultis    (md _aMultis)
+        IF NOT EXIST Ipheion    (md _Ipheion)
+    CD .. 
+
+    IF NOT EXIST j4_brand       (md j4_brand)
+
+    IF NOT EXIST j4_frontend    (md j4_frontend)
+    CD j4_frontend
+        IF NOT EXIST _edit      (md _edit)
+        IF NOT EXIST _mgmt      (md _mgmt)
+    CD .. 
+    
+    IF EXIST _mgmt (
+       CD _mgmt
+       MD @_1_copy_contents_to_folder_j4_frontend-mgmt
+       MD @_2_update_links_in articles_to_folder_j4_frontend-mgmt
+       MD @_3_then_remove_this_folder
+       CD ..
+    )    
+    IF EXIST _edit (
+       CD _edit
+       MD @_1_copy_contents_to_folder_j4_frontend-edit
+       MD @_2_update_links_in articles_to_folder_j4_frontend-edit
+       MD @_3_then_remove_this_folder
+       CD ..
+    )
+    IF EXIST _huisstijl (
+       CD _huisstijl
+       MD @_1_copy_contents_to__organisation
+       MD @_2_update_links_in articles_to__organisation
+       MD @_3_then_remove_this_folder
+       CD ..
+    )
+    IF EXIST _watermerk (
+       CD _watermerk
+       MD @_1_copy_contents_to__watermark
+       MD @_2_update_links_in articles_to_watermark
+       MD @_3_then_remove_this_folder
+       CD ..
+    )
+
 CD ..
 
 ECHO [%~n0 ] _5_extensions ...
@@ -102,9 +154,9 @@ CD _6_scripts
     IF NOT EXIST _robots       (md _robots)
     IF NOT EXIST _mysql        (md _mysql)
     IF NOT EXIST _php          (md _php)
-	IF NOT EXIST _python       (md _python)
-	IF NOT EXIST _cronjob      (md _cronjob)
-	IF NOT EXIST _ssh          (md _ssh)
+    IF NOT EXIST _python       (md _python)
+    IF NOT EXIST _cronjob      (md _cronjob)
+    IF NOT EXIST _ssh          (md _ssh)
 CD ..
 
 ECHO [%~n0 ] _7_tricks ...
