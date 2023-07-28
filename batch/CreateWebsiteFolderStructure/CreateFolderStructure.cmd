@@ -49,7 +49,7 @@ CD _2_content
     IF EXIST _images (
        CD _images
        MD @_1_copy_contents_to_folder__pictures
-       MD @_2_update_links_in articles_to_folder__pictures
+       MD @_2_update_links_in_articles_to_folder__pictures
        MD @_3_then_remove_this_folder
        CD ..
     )
@@ -72,8 +72,24 @@ CD _3_styling
     IF NOT EXIST _watermark     (md _watermark)
     IF NOT EXIST _customization (md _customization)
     CD _customization
-       IF NOT EXIST _helix_ultimate (md _helix_ultimate)
-       IF NOT EXIST _T3             (md _T3)
+       IF NOT EXIST media (md media)
+       CD media
+           IF NOT EXIST templates (md templates)
+           CD templates
+               IF NOT EXIST administrator (md administrator)
+               CD administrator 
+                   IF NOT EXIST atum (md atum)
+                      CD atum                      
+                          IF NOT EXIST css (md css)
+                      CD .. 
+               CD ..
+               IF NOT EXIST site (md site)
+               CD site
+                   IF NOT EXIST _helix_ultimate (md _helix_ultimate)
+                   IF NOT EXIST _T3             (md _T3)
+               CD ..
+           CD..
+       CD ..
     CD ..
     IF NOT EXIST _organisation  (md _organisation)
     CD _organisation
@@ -90,35 +106,35 @@ CD _3_styling
 
     IF NOT EXIST j4_frontend    (md j4_frontend)
     CD j4_frontend
-        IF NOT EXIST _edit      (md _edit)
-        IF NOT EXIST _mgmt      (md _mgmt)
+        IF NOT EXIST edit      (md edit)
+        IF NOT EXIST mgmt      (md mgmt)
     CD .. 
     
     IF EXIST _mgmt (
        CD _mgmt
        MD @_1_copy_contents_to_folder_j4_frontend-mgmt
-       MD @_2_update_links_in articles_to_folder_j4_frontend-mgmt
+       MD @_2_update_links_in_articles_to_folder_j4_frontend-mgmt
        MD @_3_then_remove_this_folder
        CD ..
     )    
     IF EXIST _edit (
        CD _edit
        MD @_1_copy_contents_to_folder_j4_frontend-edit
-       MD @_2_update_links_in articles_to_folder_j4_frontend-edit
+       MD @_2_update_links_in_articles_to_folder_j4_frontend-edit
        MD @_3_then_remove_this_folder
        CD ..
     )
     IF EXIST _huisstijl (
        CD _huisstijl
        MD @_1_copy_contents_to__organisation
-       MD @_2_update_links_in articles_to__organisation
+       MD @_2_update_links_in_articles_to__organisation
        MD @_3_then_remove_this_folder
        CD ..
     )
     IF EXIST _watermerk (
        CD _watermerk
        MD @_1_copy_contents_to__watermark
-       MD @_2_update_links_in articles_to_watermark
+       MD @_2_update_links_in_articles_to_watermark
        MD @_3_then_remove_this_folder
        CD ..
     )
@@ -130,21 +146,21 @@ IF NOT EXIST _5_extensions (md _5_extensions)
 CD _5_extensions
     IF NOT EXIST _installed    (md _installed)
     CD _installed
-        IF NOT EXIST _joomlacore    (md _joomlacore)
+        IF NOT EXIST _joomlacore  (md _joomlacore)
         IF NOT EXIST _google      (md _google)
         IF NOT EXIST _htaccess    (md _htaccess)
         CD _htaccess
-            IF NOT EXIST _history    (md _history)
-            IF NOT EXIST _reports    (md _reports)
+            IF NOT EXIST _history     (md _history)
+            IF NOT EXIST _reports     (md _reports)
         CD ..
         IF NOT EXIST _robots      (md _robots)
         CD _robots
-            IF NOT EXIST _history    (md _history)
-            IF NOT EXIST _reports    (md _reports)
+            IF NOT EXIST _history     (md _history)
+            IF NOT EXIST _reports     (md _reports)
         CD ..
     CD ..
-    IF NOT EXIST _removed      (md _removed)
-    IF NOT EXIST _under_test   (md _under_test)
+    IF NOT EXIST _removed         (md _removed)
+    IF NOT EXIST _under_test      (md _under_test)
 CD ..
 
 ECHO [%~n0 ] _6_scripts ...
@@ -170,7 +186,7 @@ IF NOT EXIST _9_mgmt       (md _9_mgmt)
 CD _9_mgmt
     IF NOT EXIST _backup       (md _backup)
     CD _backup
-        IF NOT EXIST joomla           (md joomla)
+        IF NOT EXIST joomla       (md joomla)
         CD joomla
             IF NOT EXIST test         (md test)
             IF NOT EXIST productie    (md productie)
