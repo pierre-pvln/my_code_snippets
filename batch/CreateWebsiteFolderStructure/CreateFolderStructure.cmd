@@ -87,7 +87,7 @@ CD _3_styling
                CD site
                    IF NOT EXIST _T3             (md _T3)
                CD ..
-           CD..
+           CD ..
        CD ..
        IF NOT EXIST templates (md templates)
        CD templates
