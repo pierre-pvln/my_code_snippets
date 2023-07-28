@@ -85,10 +85,16 @@ CD _3_styling
                CD ..
                IF NOT EXIST site (md site)
                CD site
-                   IF NOT EXIST _helix_ultimate (md _helix_ultimate)
                    IF NOT EXIST _T3             (md _T3)
                CD ..
            CD..
+       CD ..
+       IF NOT EXIST templates (md templates)
+       CD templates
+           IF NOT EXIST shaper_helixultimate (md shaper_helixultimate)
+           CD shaper_helixultimate
+               IF NOT EXIST css (md css)
+           CD ..
        CD ..
     CD ..
     IF NOT EXIST _organisation  (md _organisation)
