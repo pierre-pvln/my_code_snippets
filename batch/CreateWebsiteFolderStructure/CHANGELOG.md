@@ -1,6 +1,12 @@
 ---
 #  Changelog CreateItAll.cmd: Creates the baseline folder structure for website projects in current directory
 ---
+<h4>v.0.0.9 2024-01-21</h4>
+<ul>
+<li>folder structure update</li>
+<li>adding files </li>
+</ul>
+
 <h4>v.0.0.8 2023-07-28</h4>
 <ul>
 <li>added joomla 4 folders</li>
