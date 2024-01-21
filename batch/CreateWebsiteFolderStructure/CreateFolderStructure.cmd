@@ -4,6 +4,7 @@
 :: Revision: 2019 05 10 - initial version
 ::           2022 12 31 - folders added
 ::           2023 07 28 - updated based on experiences
+::           2024 01 21 - updated folder structure and added files
 ::
 :: Code location: https://github.com/pierre-pvln/my_code_snippets/tree/master/batch/CreateWebsiteFolderStructure
 ::
@@ -53,6 +54,8 @@ CD _2_content
        MD @_3_then_remove_this_folder
        CD ..
     )
+    IF NOT EXIST images_WebFolder (md images_WebFolder)
+
 CD ..
 
 ECHO [%~n0 ] _3_styling ...
@@ -72,8 +75,8 @@ CD _3_styling
     IF NOT EXIST _watermark     (md _watermark)
     IF NOT EXIST _customization (md _customization)
     CD _customization
-       IF NOT EXIST media (md media)
-       CD media
+       IF NOT EXIST media_WebFolder (md media_WebFolder)
+       CD media_WebFolder
            IF NOT EXIST templates (md templates)
            CD templates
                IF NOT EXIST administrator (md administrator)
@@ -83,14 +86,10 @@ CD _3_styling
                           IF NOT EXIST css (md css)
                       CD .. 
                CD ..
-               IF NOT EXIST site (md site)
-               CD site
-                   IF NOT EXIST _T3             (md _T3)
-               CD ..
            CD ..
        CD ..
-       IF NOT EXIST templates (md templates)
-       CD templates
+       IF NOT EXIST templates_WebFolder (md templates_WebFolder)
+       CD templates_WebFolder
            IF NOT EXIST shaper_helixultimate (md shaper_helixultimate)
            CD shaper_helixultimate
                IF NOT EXIST css (md css)
@@ -109,6 +108,9 @@ CD _3_styling
     CD .. 
 
     IF NOT EXIST j4_brand       (md j4_brand)
+	CD j4_brand
+        IF NOT EXIST favicon    (md favicon)
+    CD ..	
 
     IF NOT EXIST j4_frontend    (md j4_frontend)
     CD j4_frontend
