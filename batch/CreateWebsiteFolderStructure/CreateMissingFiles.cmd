@@ -114,6 +114,52 @@ IF NOT EXIST "back-up_informatie.txt" (
 IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for _9_mgmt\_backup\joomla\test created succesfully.
 CD ..\..\..\..
 
+:: ============================
+:: j4_backend for aMultis FILES
+:: ============================
+CD _3_styling\j4_backend\_aMultis
+IF NOT EXIST "hulp_nodig_max_150_x_max_50.txt" (
+	ECHO Grootte van het logo in de de hulp nodig module. 
+	) >hulp_nodig_max_150_x_max_50.txt
+
+IF NOT EXIST "website_bij_login_max_120_x_max_40.txt" (
+	ECHO Grootte van het aMultis logo op backend login pagina. 
+	) >website_bij_login_max_120_x_max_40.txt
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for _3_styling\j4_backend\_aMultis created succesfully.
+CD ..\..\..
+
+:: ============================
+:: j4_brand for aMultis FILES
+:: ============================
+CD _3_styling\j4_brand
+IF NOT EXIST "inlog_max_680_x_max_274.txt" (
+	ECHO Grootte van het klant logo op de backend login pagina. 
+	) >inlog_max_680_x_max_274.txt
+
+IF NOT EXIST "brand_small_max_1024_x_max_1024.txt" (
+	ECHO Grootte van het klant logo in de kleine versie backend pagina. 
+	) >brand_small_max_1024_x_max_1024.txt
+
+IF NOT EXIST "brand_large_max_1248_x_max_428.txt" (
+	ECHO Grootte van het klant logo in de grote versie backend pagina. 
+	) >brand_large_max_1248_x_max_428.txt
+
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for _3_styling\j4_brand created succesfully.
+CD ..\..
+
+:: ============================
+:: customization FILES
+:: ============================
+CD _3_styling\_customization\media_WebFolder\templates\administrator\atum\css
+
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for _3_styling\_customization\media_WebFolder\templates\administrator\atum\css created succesfully.
+CD ..\..\..\..\..\..\..
+
+CD _3_styling\_customization\templates_WebFolder\shaper_helixultimate\css
+
+IF %VERBOSE%==YES ECHO [%~n0 ] ... Files for _3_styling\_customization\templates_WebFolder\shaper_helixultimate\css created succesfully.
+CD ..\..\..\..\..
+
 GOTO CLEAN_EXIT_SUBSCRIPT
 
 :ERROR_EXIT_SUBSCRIPT
